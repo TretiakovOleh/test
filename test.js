@@ -1,9 +1,17 @@
-function getCoupeNumber(a) {
-    if(isNaN(a) || a*10%10 !== 0 || a < 0){
-        return ("Ошибка. Проверьте правильность введенного номера места")
-    }else if(a>0 && a<37){
-        return Math.floor((a+3)/4)
-    }else{return "Таких мест в вагоне не существует"}
-}
+const baseCurrencies = ['USD', 'EUR'];
+const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+const a = [];
+const b = [];
 
-console.log(getCoupeNumber(3.4))
+function availableCurr(arr, missingCurr) {
+    let res = '';
+    arr.length == 0 ? res = "Нет доступных валют" :  res = "Доступные валюты:\n";
+
+    for (let el of arr){
+        if (el !== missingCurr){
+            res += `${el}\n`
+        }
+    }
+    return res
+}
+console.log(availableCurr([...additionalCurrencies,...baseCurrencies],"CNY"))
